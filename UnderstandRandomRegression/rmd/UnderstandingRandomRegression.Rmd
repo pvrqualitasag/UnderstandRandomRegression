@@ -53,7 +53,7 @@ The following table contains an example of such data, showing Animals `r sAnimal
 knitr::kable(dfGuiltTestWithSD)
 ```
 
-Compared to the table in the original document, the standard deviations are not the same. There might be several reasons for that. When looking at a plot of the weights for the different animals one can observe the huge jump for Animal A2 between day 10 and 20.
+Compared to the table in the original document, the standard deviations are not the same. There might be several reasons for that. When looking at a plot of the weights for the different animals below, one can observe the huge jump for Animal A2 between day 10 and 20.
 
 ```{r PlotAnimalWeigth}
 dfGtestM <- reshape2::melt(data = dfGuiltTest, id.vars = "Day")
@@ -62,4 +62,12 @@ p <- p + ggplot2::geom_point(size = 3)
 p
 ```
 
-The weights grow over time
+Based on the unresolved descrepancy within the original data, it is difficult to confirm the descriptive statements. When it comes to modelling, the weights over time could be modeled as a general mean plus covariates of days on test and days on test squared. The bottom line is that means can be fit by a linear model with a certain number of parameters.
+
+
+## Multiple Trait Approach
+The data presented in the table above have typically been analyzed such that the weights at each day is a different trait. The problem with this approach is that the co-variance matrix is often overparametrized, i.e. too many parameters must be estimated given the amount of information is available in the data.
+
+
+## Covariance Functions
+
