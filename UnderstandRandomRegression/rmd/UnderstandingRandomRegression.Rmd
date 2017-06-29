@@ -1,0 +1,65 @@
+---
+title: "Understanding Random Regression"
+author: "Peter von Rohr"
+date: "6/28/2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Disclaimer {-}
+
+This document is a protocol of the insights gained during the study of http://www.aps.uoguelph.ca/~lrs/ABModels/NOTES/RRM14a.pdf. The plan is to work through the document and to reproduce the results presented in the above mentioned document.
+
+
+## Introduction
+Traits measured at various times during the life of an individual are called __longitudinal__ data. Examples of such traits are 
+
+- body weights, 
+- body lengths,
+- milk production, 
+- feed intake, 
+- fat deposition, and 
+- egg production.
+
+Biologically, different genes could be up- or downregulated or turned off during the lifetime of an individual leading to changes in physiology and performance. The age of an individual can be measured on different scales, such that there is a continuous range of points in time. Therefore these traits are also called __infinitely dimensional__. 
+
+```{r GuiltDataPrepare, echo=FALSE, results='hide'}
+### # create dataframe from data given in original notes
+dfGuiltTest <- data.frame(Day = seq(from = 10, to = 60, by = 10),
+                          A1 = c(42,53,60,72,83,94), 
+                          A2 = c( 30,50,58,68,76,85),
+                          A3 = c(38,44,51,60,70,77),
+                          stringsAsFactors = FALSE)
+### # put all animal names into a vector, assuming all columns, 
+### #  except "Day" are animals
+vecAnimals <- setdiff(colnames(dfGuiltTest),c("Day"))
+
+### # compute SD and add SD as additional column to dataframe
+SD <- round(apply(dfGuiltTest[,vecAnimals], 1, sd), digits = 1)
+dfGuiltTestWithSD <- cbind(dfGuiltTest,SD)
+
+### # all animal names are pasted together separated by ", ", 
+### #  except for the last which is separated by "and"
+sAnimalList <- paste(paste(vecAnimals[1:(length(vecAnimals)-1)], collapse = ", "), 
+                     vecAnimals[length(vecAnimals)], sep = " and ")
+```
+
+The following table contains an example of such data, showing Animals `r sAnimalList` with measurements on `r nrow(dfGuiltTest)` different days between day `r dfGuiltTest$Day[1]` and day `r dfGuiltTest$Day[nrow(dfGuiltTest)]`. 
+
+```{r GuiltDataTable, echo=FALSE}
+knitr::kable(dfGuiltTestWithSD)
+```
+
+Compared to the table in the original document, the standard deviations are not the same. There might be several reasons for that. When looking at a plot of the weights for the different animals one can observe the huge jump for Animal A2 between day 10 and 20.
+
+```{r PlotAnimalWeigth}
+dfGtestM <- reshape2::melt(data = dfGuiltTest, id.vars = "Day")
+p <- ggplot2::ggplot(data = dfGtestM, mapping = ggplot2::aes(x=value, y=variable, colour = Day))
+p <- p + ggplot2::geom_point(size = 3)
+p
+```
+
+The weights grow over time
