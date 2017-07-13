@@ -4,11 +4,12 @@ author: T. M. Englishby, G. Banos, K. L. Moore, M. P. Coffey, R. D. Evans, and D
   P. Berry
 date: "7/12/2017"
 output:
-  slidy_presentation: default
+  beamer_presentation: default
   ioslides_presentation: default
-bibliography: ["EBCM2016Pres.bib"]
-biblio-style: "apalike"
-link-citations: true  
+  slidy_presentation: default
+link-citations: yes
+bibliography: EBCM2016Pres.bib
+biblio-style: apalike
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +17,12 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Introduction
-- Animals grow at different rates depending on their genetic merit
+- Animals grow at different rates depending on their genetic merit $\rightarrow$ progeny of some animals reach defined carcass traits at different age
+- Economic importance of carcass traits and high heritabilities of carcass traits suggest to improve these traits in a breeding program
+- Carcass traits are end-of-life traits $\rightarrow$ no repetition
+- Using sire model, progeny are like longitudinal data
+- See Jones et al (1999)
+
 
 ## What seams clear to me
 
