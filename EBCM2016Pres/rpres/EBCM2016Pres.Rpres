@@ -1,0 +1,26 @@
+Genetic analysis of carcass traits in beef cattle using random regression models
+========================================================
+author: T. M. Englishby, G. Banos, K. L. Moore, M. P. Coffey, R. D. Evans, and D. P. Berry
+date: 
+autosize: true
+
+What is clear
+========================================================
+
+\begin{equation}
+y_i = \mu + s_i + e_i
+\end{equation}
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+```{r, echo=FALSE}
+plot(cars)
+```

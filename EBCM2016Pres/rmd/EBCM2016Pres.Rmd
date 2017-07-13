@@ -1,0 +1,81 @@
+---
+title: "Genetic analysis of carcass traits in beef cattle using random regression models"
+author: T. M. Englishby, G. Banos, K. L. Moore, M. P. Coffey, R. D. Evans, and D.
+  P. Berry
+date: "7/12/2017"
+output:
+  slidy_presentation: default
+  ioslides_presentation: default
+bibliography: ["EBCM2016Pres.bib"]
+biblio-style: "apalike"
+link-citations: true  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+- Animals grow at different rates depending on their genetic merit
+
+## What seams clear to me
+
+
+## What is unclear to me
+
+- Model
+\begin{align}
+Y_{dhjklqnz} &= Parity + Abbatoir + DoS + \sum_{h=1}^9 c_h \times Dambreed_h \\
+  &+  a_1 \times Het + a_2 \times Rec \\
+  &+  \sum_{i=1}^n b_n P_n Age + \sum_{i=1}^n Sire_{kn} P_n Age + \sum_{i=1}^n HY_{ln} P_n Age \\
+  &+ HYS_q + e_{dhjklqnz}
+\end{align}
+
+
+## References
+```{r GenerateReferences}
+bref <- c(bibentry(
+   bibtype = "Article",
+     title = "Herd-specific random regression carcass profiles for beef cattle after adjustment for animal genetic merit",
+     author = c(as.person("Tanya M Englishby [aut]"), 
+                as.person("Kirsty L Moore [aut]]"),
+                as.person("Donagh P Berry [aut]"),
+                as.person("Mike P Coffey [aut]"),
+                as.person("Georgios Banos [aut]")),
+     year = "2017",
+     journal = "Meat Science",
+     number = "129",
+     pages = "188–196",
+     key = "EMBC2017"),
+     bibentry(
+       bibtype = "Article",
+       title   = "Genetic analysis of carcass traits in beef cattle using random regression models",
+       author  = c(as.person("T. M. Englishby [aut]"),
+                   as.person("G. Banos [aut]"),
+                   as.person("K. L. Moore [aut]"),
+                   as.person("M. P. Coffey [aut]"),
+                   as.person("R. D. Evans [aut]"),
+                   as.person("D. P. Berry [aut]")),
+       year    = "2016",
+       journal = "J. Anim. Sci",
+       number  = "94",
+       pages   = "1354–1364",
+       doi     = "doi:10.2527/jas2015-0246",
+       key     = "EBMC2016"),
+   bibentry(
+     bibtype = "Article",
+     title   = "Genetic evaluation of Holstein Friesian sires for daughter condition-score changes using a random regression model",
+     author  = c(as.person("H. E. Jonest [aut]"),
+                 as.person("I. M. S. White [aut]"),
+                 as.person("S. Brotherstone [aut]")),
+     year    = "1999",
+     journal = "Animal Science",
+     number  = "68",
+     pages   = "467-475",
+     key     = "JWB1999"
+   ))
+sBibFile <- "EBCM2016Pres.bib"
+if(!file.exists(sBibFile))
+  cat(paste(toBibtex(bref), collapse = "\n"), "\n", file = sBibFile)
+```
+

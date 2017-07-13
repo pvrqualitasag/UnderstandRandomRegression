@@ -1,0 +1,71 @@
+---
+title: "Understanding The EMBC2017 Paper"
+author: "Peter von Rohr"
+date: "6/30/2017"
+output: pdf_document
+bibliography: ["UnderstandingTheEMBC2017Paper.bib"]
+biblio-style: apalike
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Disclaimer
+This document is a protocol of reading the EMBC2017 Paper [@EMBC2017]. Questions and further references for trials of answering the questions are listed in this document.
+
+
+## Questions
+This section is a collection of questions which I consider open and unanswered an need further research.
+
+1. What is the structure of the data? In particular, are there repetitions for the same animal on what type of traits? If there are not repetition, how can random regressions be applied? How are factors in the polynomials determined?
+
+2. How is the model constructed
+
+
+## Answers
+For the development of the model the authors in [@EMBC2017] refer to their earlier paper [@EBMC2016].
+
+1. As
+
+\pagebreak
+
+```{r Bibliography, echo=FALSE, results='hide'}
+bref <- c(bibentry(
+     bibtype = "Article",
+     title = "Herd-specific random regression carcass profiles for beef cattle after adjustment for animal genetic merit",
+     author = c(as.person("Tanya M Englishby [aut]"), 
+                as.person("Kirsty L Moore [aut]]"),
+                as.person("Donagh P Berry [aut]"),
+                as.person("Mike P Coffey [aut]"),
+                as.person("Georgios Banos [aut]")),
+     year = "2017",
+     journal = "Meat Science",
+     number = "129",
+     pages = "188–196",
+     key = "EMBC2017"),
+     bibentry(
+       bibtype = "Article",
+       title   = "Genetic analysis of carcass traits in beef cattle using random regression models",
+       author  = c(as.person("T. M. Englishby [aut]"),
+                   as.person("G. Banos [aut]"),
+                   as.person("K. L. Moore [aut]"),
+                   as.person("M. P. Coffey [aut]"),
+                   as.person("R. D. Evans [aut]"),
+                   as.person("D. P. Berry [aut]")),
+       year    = "2016",
+       journal = "J. Anim. Sci",
+       number  = "94",
+       pages   = "1354–1364",
+       doi     = "doi:10.2527/jas2015-0246",
+       key     = "EBMC2016"
+     ))
+
+### # Fixed assignmen of bib file
+sBibFile <- "UnderstandingTheEMBC2017Paper.bib"
+if(!file.exists(sBibFile))
+  cat(paste(toBibtex(bref), collapse = "\n"), "\n", file = sBibFile)
+```
+
+`r if (knitr:::is_html_output()) '## References'`
